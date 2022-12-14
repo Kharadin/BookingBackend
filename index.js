@@ -25,11 +25,14 @@ const connect = async ()=> {
      //     await
            mongoose.connect(process.env.MONGO, { ignoreUndefined: true });
           console.log('Attempting mongoose.connect ...')
+          
      } catch (error) {
           throw error;
      }
 
 };
+
+mongoose.set('strictQuery', true);
 
 mongoose.connection.on("disconnected", ()=> {
      console.log("mongoDB disconnected")
